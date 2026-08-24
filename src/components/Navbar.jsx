@@ -21,7 +21,8 @@ import {
     Moon,
     Key,
     BookOpen,
-    HelpCircle
+    HelpCircle,
+    Network
 } from "lucide-react";
 
 export const Navbar = ({
@@ -140,8 +141,8 @@ export const Navbar = ({
     }, [ALL_SEARCH_ITEMS, searchTerm]);
 
     const navItems = [
-
         { id: "interview", path: "/interview", label: "Interview Q&A", shortLabel: "Q&A", icon: FileText, badge: "Mastery" },
+        { id: "system-design", path: "/system-design", label: "System Design", shortLabel: "Design", icon: Network, badge: "HLD/LLD" },
         { id: "revise", path: "/revise", label: "Revise", shortLabel: "Revise", icon: Layers, badge: "Learn" },
         { id: "dsa", path: "/dsa", label: "DSA Practice", shortLabel: "DSA", icon: Code2 },
         { id: "notes", path: "/notes", label: "My Notes", shortLabel: "Notes", icon: Edit3 },

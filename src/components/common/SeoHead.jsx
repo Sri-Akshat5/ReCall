@@ -59,6 +59,78 @@ export const SeoHead = ({ activeTab = "" }) => {
         title: "Striver's A2Z DSA Sheet • 16-Step Curriculum | ReCall",
         desc: "Step-by-step 16 module DSA curriculum from basics to advanced Graphs, Dynamic Programming, and Tries."
       },
+      "/system-design": {
+        title: "System Design Masterclass • HLD, LLD & Distributed Systems | ReCall",
+        desc: "Master High-Level Design (HLD), Low-Level Design (LLD), Microservices, Load Balancers, and Distributed Databases for Senior SDE interviews."
+      },
+      "/system-design/hld-1": {
+        title: "Design TinyURL (URL Shortener) • High-Level System Architecture | ReCall",
+        desc: "Architecting a high-throughput URL Shortener processing 50 Billion redirects/day with Base62 encoding, Key Generation Service (KGS), Redis LRU cache, and Cassandra NoSQL."
+      },
+      "/system-design/hld-2": {
+        title: "Design an API Rate Limiter • Token Bucket & Redis Lua Scripting | ReCall",
+        desc: "High-level design for a distributed API Rate Limiter using Token Bucket, Sliding Window Log, and atomic Redis Lua scripts to process 25k req/sec with sub-millisecond overhead."
+      },
+      "/system-design/hld-3": {
+        title: "Design WhatsApp / Telegram Chat App • WebSockets & Cassandra HLD | ReCall",
+        desc: "Architecting a real-time messaging app with WebSockets, Cassandra message store, Redis user presence heartbeats, and End-to-End Encryption (E2EE) at 500M DAU scale."
+      },
+      "/system-design/hld-4": {
+        title: "Design YouTube / Netflix • Video Transcoding, HLS & CDN Architecture | ReCall",
+        desc: "Scaling video streaming platforms for 1B viewers with HLS Adaptive Bitrate Streaming, Kafka transcoding pipelines, S3 object storage, and Cloudflare CDN caching."
+      },
+      "/system-design/hld-5": {
+        title: "Design Uber / Lyft • Uber H3 Hexagonal Grid & Geospatial Indexing | ReCall",
+        desc: "Real-time ride-matching and driver tracking system design using Uber H3 hexagonal spatial indexing, Redis GEOADD, and Ring Buffer dispatch engines."
+      },
+      "/system-design/hld-6": {
+        title: "Design Distributed Web Crawler • Bloom Filters & Politeness Queues | ReCall",
+        desc: "Building a scalable Web Crawler processing 1B pages/month with Bloom Filter link deduplication, DNS local caching, and per-host politeness rate-limiting."
+      },
+      "/system-design/hld-7": {
+        title: "Design Twitter / Instagram News Feed • Hybrid Push/Pull Fan-out HLD | ReCall",
+        desc: "Social media timeline generation engine using Hybrid Push/Pull Fan-out, pre-computed Redis Sorted Sets, and Neo4j social graph follower lookup."
+      },
+      "/system-design/lld-1": {
+        title: "LLD: TinyURL Key Generation & Storage Engine • Low-Level Design | ReCall",
+        desc: "Low-Level Design for TinyURL with OOD class diagrams, PostgreSQL ER schema, Base62 encoder strategy, and REST API contracts."
+      },
+      "/system-design/lld-2": {
+        title: "LLD: Distributed API Rate Limiter Engine • Low-Level Design | ReCall",
+        desc: "Low-Level Design for Rate Limiter with Token Bucket classes, Redis Lua script execution, and middleware interceptor specs."
+      },
+      "/system-design/lld-3": {
+        title: "LLD: WhatsApp WebSocket Chat Engine • Low-Level Design | ReCall",
+        desc: "Low-Level Design for WhatsApp Chat with WebSocket session manager, Protobuf packet parser, Cassandra message table, and Redis presence heartbeats."
+      },
+      "/system-design/lld-4": {
+        title: "LLD: Video Transcoding & HLS Playlist Engine • Low-Level Design | ReCall",
+        desc: "Low-Level Design for Video Transcoding pipeline with FFmpeg worker tasks, HLS .m3u8 builder, and S3 upload contracts."
+      },
+      "/system-design/lld-5": {
+        title: "LLD: Uber Geospatial H3 Index & Driver Matcher • Low-Level Design | ReCall",
+        desc: "Low-Level Design for Uber driver matching with Hexagonal H3 spatial index, driver state machine, and dispatch strategy pattern."
+      },
+      "/system-design/lld-6": {
+        title: "LLD: Web Crawler URL Frontier & HTML Parser • Low-Level Design | ReCall",
+        desc: "Low-Level Design for Web Crawler with politeness queue manager, Bloom filter deduplicator, and Cassandra HTML storage."
+      },
+      "/system-design/lld-7": {
+        title: "LLD: Social News Feed Fan-out Engine • Low-Level Design | ReCall",
+        desc: "Low-Level Design for News Feed timeline generation with Hybrid fan-out strategy, Redis ZSET cache, and celebrity pull aggregator."
+      },
+      "/system-design/lld-8": {
+        title: "LLD: Parking Lot Management System (OOD Classic) • Low-Level Design | ReCall",
+        desc: "Classic Object-Oriented Design for Parking Lot with Vehicle hierarchy, Spot allocation strategy, and MySQL billing ER schema."
+      },
+      "/system-design/lld-9": {
+        title: "LLD: Elevator Control System (OOD Classic) • Low-Level Design | ReCall",
+        desc: "Object-Oriented Design for Elevator Control System with LOOK/SCAN scheduling algorithm, ElevatorCar state machine, and multi-car dispatcher."
+      },
+      "/system-design/lld-10": {
+        title: "LLD: LRU / LFU Thread-Safe Cache Engine • Low-Level Design | ReCall",
+        desc: "High-performance O(1) thread-safe LRU/LFU cache design using DoublyLinkedList pointers, ConcurrentHashMap, and ReentrantReadWriteLock."
+      },
       "/revise": {
         title: "Active Recall 3D Flashcards • Leitner Spaced Repetition | ReCall",
         desc: "Interactive 3D active recall flashcards using Leitner spaced repetition to lock software engineering knowledge into long-term memory."
@@ -116,51 +188,35 @@ export const SeoHead = ({ activeTab = "" }) => {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "ReCall Technical Interview Prep",
-      "alternateName": ["ReCall", "ReCall DSA & Java Masterclass"],
+      "alternateName": ["ReCall", "ReCall System Design & Architecture Hub"],
       "url": baseUrl,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": `${baseUrl}/interview?q={search_term_string}`,
+        "target": `${baseUrl}/system-design?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     });
 
-    // Organization Schema
-    injectJsonLd("jsonld-org", {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ReCall",
-      "url": baseUrl,
-      "logo": `${baseUrl}/favicon.ico`,
-      "sameAs": [
-        "https://github.com/",
-        "https://leetcode.com/"
-      ]
-    });
-
-    // FAQPage Schema for Interview QA
-    if (currentPath.startsWith("/interview")) {
-      injectJsonLd("jsonld-faq", {
+    // TechArticle Schema for System Design HLD Pages
+    if (currentPath.startsWith("/system-design/hld-")) {
+      injectJsonLd("jsonld-article", {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Why does Map interface not extend Collection in Java?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Map interface in Java does not extend Collection because Collection operates on single elements (add(E)), whereas Map operates on key-value pairs (put(K,V)). Their method signatures and data structures are incompatible."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does HashMap work internally in Java 8+?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Java 8 HashMap uses an array of Node buckets. Hash collisions are resolved via linked lists. When a bucket exceeds TREEIFY_THRESHOLD (8 items) and array capacity is at least 64, the linked list transforms into a Red-Black Tree for O(log N) lookup."
-            }
+        "@type": "TechArticle",
+        "headline": currentSeo.title,
+        "description": currentSeo.desc,
+        "mainEntityOfPage": fullCanonicalUrl,
+        "author": {
+          "@type": "Organization",
+          "name": "ReCall System Design Engineering Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ReCall",
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${baseUrl}/favicon.ico`
           }
-        ]
+        }
       });
     }
 

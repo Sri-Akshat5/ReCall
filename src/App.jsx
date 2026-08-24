@@ -6,6 +6,7 @@ import Interviewqa from "./pages/Interviewqa";
 import Revision from "./pages/Revision";
 import Notes from "./pages/Notes";
 import Dsa from "./pages/Dsa";
+import SystemDesign from "./pages/SystemDesign";
 import NotFound from "./pages/NotFound";
 import SeoHead from "./components/common/SeoHead";
 import Breadcrumbs from "./components/common/Breadcrumbs";
@@ -97,6 +98,16 @@ export function App() {
                 <Interviewqa onSelectRecallCard={handleSelectRecallCard} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
               </div>
             }
+          />
+
+          <Route
+            path="/system-design"
+            element={<SystemDesign />}
+          />
+
+          <Route
+            path="/system-design/*"
+            element={<SystemDesign />}
           />
 
           <Route
