@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://recall-prep.vercel.app/sitemap.xml
+Sitemap: https://recall-iota-two.vercel.app/sitemap.xml

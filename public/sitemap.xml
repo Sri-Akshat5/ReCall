@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://recall-prep.vercel.app/</loc>
+    <loc>https://recall-iota-two.vercel.app/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview</loc>
+    <loc>https://recall-iota-two.vercel.app/interview</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview/java</loc>
+    <loc>https://recall-iota-two.vercel.app/interview/java</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview/java/collections</loc>
+    <loc>https://recall-iota-two.vercel.app/interview/java/collections</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview/java/concurrency</loc>
+    <loc>https://recall-iota-two.vercel.app/interview/java/concurrency</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview/java/jvm</loc>
+    <loc>https://recall-iota-two.vercel.app/interview/java/jvm</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/interview/java/spring-boot</loc>
+    <loc>https://recall-iota-two.vercel.app/interview/java/spring-boot</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/dsa</loc>
+    <loc>https://recall-iota-two.vercel.app/dsa</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/dsa/top75</loc>
+    <loc>https://recall-iota-two.vercel.app/dsa/top75</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/dsa/top150</loc>
+    <loc>https://recall-iota-two.vercel.app/dsa/top150</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/dsa/top250</loc>
+    <loc>https://recall-iota-two.vercel.app/dsa/top250</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/dsa/a2z</loc>
+    <loc>https://recall-iota-two.vercel.app/dsa/a2z</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/revise</loc>
+    <loc>https://recall-iota-two.vercel.app/revise</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/notes</loc>
+    <loc>https://recall-iota-two.vercel.app/notes</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://recall-prep.vercel.app/quiz</loc>
+    <loc>https://recall-iota-two.vercel.app/quiz</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

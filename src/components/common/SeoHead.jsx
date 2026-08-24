@@ -5,7 +5,7 @@ export const SeoHead = ({ activeTab = "" }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const baseUrl = "https://recall-prep.vercel.app";
+    const baseUrl = "https://recall-iota-two.vercel.app";
     const currentPath = location.pathname;
     const fullCanonicalUrl = `${baseUrl}${currentPath === "/" ? "" : currentPath}`;
 
