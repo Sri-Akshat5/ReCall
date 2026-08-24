@@ -1,0 +1,375 @@
+﻿java-1|1. Why is Java so popular?
+java-2|2. What is platform independence?
+java-3|3. What is bytecode?
+java-4|4. Compare JDK vs JVM vs JRE
+java-5|5. What are the important differences between C++ and Java?
+java-6|6. What is the role for a classloader in Java?
+java-7|7. What are Wrapper classes?
+java-8|8. Why do we need Wrapper classes in Java?
+java-9|9. What are the different ways of creating Wrapper class instances?
+java-10|10. What are differences in the two ways of creating Wrapper classes?
+java-11|11. What is auto boxing?
+java-12|12. What are the advantages of auto boxing?
+java-13|13. What is casting?
+java-14|14. What is implicit casting?
+java-15|15. What is explicit casting?
+java-16|16. Are all StringΓÇÖs immutable?
+java-17|17. Where are String values stored in memory?
+java-18|18. Why should you be careful about String concatenation(+) operator in loops?
+java-19|19. How do you solve above problem?
+java-20|20. What are differences between String and StringBuffer?
+java-21|21. What are differences between StringBuilder and StringBuffer?
+java-22|22. Can you give examples of different utility methods in String class?
+java-23|23. What is a class?
+java-24|24. What is an object?
+java-25|25. What is state of an object?
+java-26|26. What is behavior of an object?
+java-27|27. What is the super class of every class in Java?
+java-28|28. Explain about toString method ?
+java-29|29. What is the use of equals method in Java?
+java-30|30. What are the important things to consider when implementing equals method?
+java-31|31. What is the Hashcode method used for in Java?
+java-32|32. Explain inheritance with examples .
+java-33|33. What is method overloading?
+java-34|34. What is method overriding?
+java-35|35. Can super class reference variable can hold an object of sub class?
+java-36|36. Is multiple inheritance allowed in Java?
+java-37|37. What is an interface?
+java-38|38. How do you define an interface?
+java-39|39. How do you implement an interface?
+java-40|40. Can you explain a few tricky things about interfaces?
+java-41|41. Can you extend an interface?
+java-42|42. Can a class extend multiple interfaces?
+java-43|43. What is an abstract class?
+java-44|44. When do you use an abstract class?
+java-45|45. How do you define an abstract method?
+java-46|46. Compare abstract class vs interface?
+java-47|47. What is a constructor?
+java-48|48. What is a default constructor?
+java-49|49. Will this code compile (Default constructor trap)?
+java-50|50. How do you call a super class constructor from a constructor?
+java-51|51. Will this code compile (super placement)?
+java-52|52. What is the use of this()?
+java-53|53. Can a constructor be called directly from a method?
+java-54|54. Is a super class constructor called even when there is no explicit call from a sub class constructor?
+java-55|55. What is polymorphism?
+java-56|56. What is the use of instanceof operator in Java?
+java-57|57. What is coupling?
+java-58|58. What is cohesion?
+java-59|59. What is encapsulation?
+java-60|60. What is an inner class?
+java-61|61. What is a static inner class?
+java-62|62. Can you create an inner class inside a method?
+java-63|63. What is an anonymous class?
+java-64|64. What is default class modifier?
+java-65|65. What is private access modifier?
+java-66|66. What is default or package access modifier?
+java-67|67. What is protected access modifier?
+java-68|68. What is public access modifier?
+java-69|69. What access types of variables can be accessed from a class in same package?
+java-70|70. What access types of variables can be accessed from a class in different package?
+java-71|71. What access types of variables can be accessed from a sub class in same package?
+java-72|72. What access types of variables can be accessed from a sub class in different package?
+java-73|73. What is the use of a final modifier on a class?
+java-74|74. What is the use of a final modifier on a method?
+java-75|75. What is a final variable?
+java-76|76. What is a final argument?
+java-77|77. What happens when a variable is marked as volatile?
+java-78|78. What is a static variable?
+java-79|79. Why should you always use blocks around if statement?
+java-80|80. Guess the output of nested if-else condition
+java-81|81. Guess the output of short-circuit evaluation
+java-82|82. Guess the output of this switch block
+java-83|83. Guess the output of this switch fall-through case
+java-84|84. Should default be the last case in a switch statement?
+java-85|85. Can a switch statement be used around a String?
+java-86|86. Guess the output of loop iteration boundary
+java-87|87. What is an enhanced for loop?
+java-88|88. What is the output of nested for loop break statement?
+java-89|89. What is the output of post-increment loop statement?
+java-90|90. What is the output of while loop boolean flag?
+java-91|91. Why is exception handling important?
+java-92|92. What design pattern is used to implement exception handling features?
+java-93|93. What is the need for finally block?
+java-94|94. In what scenarios is code in finally not executed?
+java-95|95. Will finally be executed when return statement exists in try block?
+java-96|96. Is try without a catch allowed?
+java-97|97. Is try without catch and finally allowed?
+java-98|98. Can you explain the hierarchy of exception handling classes?
+java-99|99. What is the difference between error and exception?
+java-100|100. What is the difference between checked exceptions and unchecked exceptions?
+java-101|101. How do you throw an exception from a method?
+java-102|102. What happens when you throw a checked exception from a method?
+java-103|103. What are the options you have to eliminate compilation errors when handling checked exceptions?
+java-104|104. How do you create a custom exception?
+java-105|105. How do you handle multiple exception types with same exception handling block?
+java-106|106. Can you explain about try with resources?
+java-107|107. How does try with resources work?
+java-108|108. Can you explain a few exception handling best practices?
+java-109|109. What are the default values in an array?
+java-110|110. How do you loop around an array using enhanced for loop?
+java-111|111. How do you print the content of an array?
+java-112|112. How do you compare two arrays?
+java-113|113. What is an enum?
+java-114|114. Can you use a switch statement around an enum?
+java-115|115. What are variable arguments or varargs?
+java-116|116. What are asserts used for?
+java-117|117. When should asserts be used?
+java-118|118. What is garbage collection?
+java-119|119. Can you explain garbage collection with an example?
+java-120|120. When is garbage collection run?
+java-121|121. What are best practices on garbage collection?
+java-122|122. What are initialization blocks?
+java-123|123. What is a static initializer?
+java-124|124. What is an instance initializer block?
+java-125|125. What is tokenizing?
+java-126|126. Can you give an example of tokenizing?
+java-127|127. What is serialization?
+java-128|128. How do you serialize an object using serializable interface?
+java-129|129. How do you de-serialize in Java?
+java-130|130. What do you do if only parts of the object have to be serialized?
+java-131|131. How do you serialize a hierarchy of objects?
+java-132|132. Are the constructors in an object invoked when it is de-serialized?
+java-133|133. Are the values of static variables stored when an object is serialized?
+java-134|134. Why do we need collections in Java?
+java-135|135. What are the important interfaces in the collection hierarchy?
+java-136|136. What are the important methods that are declared in the collection interface?
+java-137|137. Can you explain briefly about the List interface?
+java-138|138. Explain about ArrayList with an example?
+java-139|139. Can an ArrayList have duplicate elements?
+java-140|140. How do you iterate around an ArrayList using iterator?
+java-141|141. How do you sort an ArrayList?
+java-142|142. How do you sort elements in an ArrayList using comparable interface?
+java-143|143. How do you sort elements in an ArrayList using comparator interface?
+java-144|144. What is vector class? How is it different from an ArrayList?
+java-145|145. What is linkedList? What interfaces does it implement? How is it different from an ArrayList?
+java-146|146. Can you briefly explain about the Set interface?
+java-147|147. What are the important interfaces related to the Set interface?
+java-148|148. What is the difference between Set and sortedSet interfaces?
+java-149|149. Can you give examples of classes that implement the Set interface?
+java-150|150. What is a HashSet?
+java-151|151. What is a linkedHashSet? How is different from a HashSet?
+java-152|152. What is a TreeSet? How is different from a HashSet?
+java-153|153. Can you give examples of implementations of navigableSet?
+java-154|154. Explain briefly about Queue interface?
+java-155|155. What are the important interfaces related to the Queue interface?
+java-156|156. Explain about the Deque interface?
+java-157|157. Explain the BlockingQueue interface?
+java-158|158. What is a priorityQueue?
+java-159|159. Can you give example implementations of the BlockingQueue interface?
+java-160|160. Can you briefly explain about the Map interface?
+java-161|161. What is difference between Map and sortedMap?
+java-162|162. What is a HashMap?
+java-163|163. What are the different methods in a Hash Map?
+java-164|164. What is a TreeMap? How is different from a HashMap?
+java-165|165. Can you give an example of implementation of navigableMap interface?
+java-166|166. What are the static methods present in the collections class?
+java-167|167. What is the difference between synchronized and concurrent collections in Java?
+java-168|168. Explain about the new concurrent collections in Java?
+java-169|169. Explain about copyonwrite concurrent collections approach?
+java-170|170. What is compareandswap approach?
+java-171|171. What is a lock? How is it different from using synchronized approach?
+java-172|172. What is initial capacity of a Java collection?
+java-173|173. What is load factor?
+java-174|174. When does a Java collection throw UnsupportedOperationException?
+java-175|175. What is difference between fail-safe and fail-fast iterators?
+java-176|176. What are atomic operations in Java?
+java-177|177. What is BlockingQueue in Java?
+java-178|178. What are Generics?
+java-179|179. Why do we need Generics? Example of code flexibility?
+java-180|180. How do you declare a generic class?
+java-181|181. What are the restrictions in using generic type declared in a class?
+java-182|182. How can we restrict Generics to a subclass of particular class?
+java-183|183. How can we restrict Generics to a super class of particular class?
+java-184|184. Can you give an example of a generic method?
+java-185|185. What is the need for threads in Java?
+java-186|186. How do you create a thread?
+java-187|187. How do you create a thread by extending thread class?
+java-188|188. How do you create a thread by implementing runnable interface?
+java-189|189. How do you run a thread in Java?
+java-190|190. What are the different states of a thread?
+java-191|191. What is priority of a thread? How do you change thread priority?
+java-192|192. What is executorservice?
+java-193|193. Can you give an example for executorservice?
+java-194|194. Explain different ways of creating executor services.
+java-195|195. How do you check whether an executionservice task executed successfully?
+java-196|196. What is callable? How do you execute a callable from executionservice?
+java-197|197. What is synchronization of threads?
+java-198|198. Can you give an example of a synchronized block?
+java-199|199. Can a static method be synchronized?
+java-200|200. What is the use of join method in threads?
+java-201|201. Describe a few other important methods in threads?
+java-202|202. What is a deadlock?
+java-203|203. What are the important methods in Java for inter-thread communication?
+java-204|204. What is the use of wait method?
+java-205|205. What is the use of notify method?
+java-206|206. What is the use of notifyall method?
+java-207|207. Can you write a synchronized program with wait and notify methods?
+java-208|208. What is functional programming?
+java-209|209. Can you give an example of functional programming?
+java-210|210. What is a stream?
+java-211|211. Explain about streams with intermediate and terminal operations?
+java-212|212. What are terminal operations in streams?
+java-213|213. What are method references?
+java-214|214. What are lambda expressions?
+java-215|215. Can you give an example of lambda expression?
+java-216|216. Can you explain the relationship between lambda expression and functional interfaces?
+java-217|217. What is a predicate?
+java-218|218. What is the functional interface - function?
+java-219|219. What is a consumer?
+java-220|220. Can you give examples of functional interfaces with multiple arguments?
+java-221|221. What are the new features in Java 5?
+java-222|222. What are the new features in Java 6?
+java-223|223. What are the new features in Java 7?
+java-224|224. What are the new features in Java 8?
+java-225|225. What are Virtual Threads (Project Loom) introduced in Java 21?
+java-226|226. How do Virtual Threads differ from traditional OS Platform Threads?
+java-227|227. What is the carrier thread concept in Virtual Threads?
+java-228|228. What is pinning in Virtual Threads and how do synchronized blocks cause it?
+java-229|229. What are Sealed Classes in Java 17 and why use them?
+java-230|230. What is Record pattern matching in Java 21?
+java-231|231. What is the difference between Record class and standard Lombok @Data?
+java-232|232. How does Garbage Collector tuning (-XX:+UseG1GC vs -XX:+UseZGC) impact latency?
+java-233|233. What is ZGC (Z Garbage Collector) and how does it achieve sub-millisecond pauses?
+java-234|234. What is the difference between Strong, Soft, Weak, and Phantom references?
+java-235|235. How does WeakHashMap work and when should you use it?
+java-236|236. What is ThreadLocal memory leak and how do you prevent it in web applications?
+java-237|237. What is CompletableFuture and how does it compare to Future?
+java-238|238. What is the difference between supplyAsync() and runAsync() in CompletableFuture?
+java-239|239. How do you handle exceptions in CompletableFuture using exceptionally() and handle()?
+java-240|240. What is ForkJoinPool and how does Parallel Streams use it?
+java-241|241. What is the Work-Stealing algorithm in ForkJoinPool?
+java-242|242. What is the difference between CountDownLatch and CyclicBarrier?
+java-243|243. What is Semaphore and how is it used for rate limiting?
+java-244|244. What is ReentrantLock and how does it differ from synchronized keyword?
+java-245|245. What is ReadWriteLock and when does it improve throughput?
+java-246|246. What is StampedLock and what is optimistic reading?
+java-247|247. What is CAS (Compare-And-Swap) hardware primitive in AtomicInteger?
+java-248|248. What is false sharing in CPU cache lines and @Contended annotation?
+java-249|249. What is the Happens-Before relationship in Java Memory Model (JMM)?
+java-250|250. How does instruction reordering occur and how does volatile prevent it?
+java-251|251. What is double-checked locking singleton pattern and why is volatile required?
+java-252|252. What is Object Header layout in 64-bit JVM (Mark Word & Klass Word)?
+java-253|253. What is Compressed OOPs (-XX:+UseCompressedOops) in JVM?
+java-254|254. What is Escape Analysis and scalar replacement in JIT compiler?
+java-255|255. What is On-Stack Replacement (OSR) in JIT compilation?
+java-256|256. What is the difference between C1 (Client) and C2 (Server) JIT compilers?
+java-257|257. What is Tiered Compilation in JVM?
+java-258|258. What is Metaspace sizing (-XX:MetaspaceSize & -XX:MaxMetaspaceSize)?
+java-259|259. How do you analyze a Java Thread Dump during high CPU usage?
+java-260|260. How do you analyze a Java Heap Dump (.hprof) to find memory leaks?
+java-261|261. What tools do you use for Java profiling (JProfiler, VisualVM, JFR)?
+java-262|262. What is JDK Flight Recorder (JFR) and JDK Mission Control (JMC)?
+java-263|263. What is OutOfMemoryError: Metaspace and how do you fix it?
+java-264|264. What is OutOfMemoryError: Unable to create new native thread?
+java-265|265. What is Spring Boot Auto-configuration (@EnableAutoConfiguration)?
+java-266|266. How does @SpringBootApplication meta-annotation work internally?
+java-267|267. What is the lifecycle of a Spring Bean (PostConstruct, PreDestroy)?
+java-268|268. What is the difference between BeanFactory and ApplicationContext?
+java-269|269. What are Bean Scopes (Singleton, Prototype, Request, Session)?
+java-270|270. Why is Dependency Injection preferred over manual object instantiation?
+java-271|271. Constructor Injection vs Field Injection vs Setter Injection in Spring.
+java-272|272. What is Spring AOP and how do Dynamic Proxies vs CGLIB work?
+java-273|273. What is @Transactional annotation propagation levels (REQUIRED, REQUIRES_NEW)?
+java-274|274. What is transactional isolation level (READ_COMMITTED, REPEATABLE_READ)?
+java-275|275. How does Spring Security filter chain work internally?
+java-276|276. What is JWT (JSON Web Token) authentication architecture in Java microservices?
+java-277|277. What is Spring Cloud Config Server and dynamic refresh (@RefreshScope)?
+java-278|278. What is Circuit Breaker pattern (Resilience4j) in Java Microservices?
+java-279|279. What is API Gateway routing and rate limiting in Spring Cloud Gateway?
+java-280|280. What is Distributed Tracing (Micrometer Tracing / Zipkin / Jaeger)?
+java-281|281. What is Idempotency in REST APIs and how do you enforce it in Java?
+java-282|282. What is CQRS (Command Query Responsibility Segregation) pattern?
+java-283|283. What is Event Sourcing pattern with Apache Kafka in Java?
+java-284|284. What is Saga Pattern (Choreography vs Orchestration) for distributed transactions?
+java-285|285. What is Outbox Pattern for reliable Kafka message publishing?
+java-286|286. What is Database Connection Pooling (HikariCP) tuning?
+java-287|287. What is JPA First Level Cache vs Second Level Cache (Hibernate/Ehcache)?
+java-288|288. What is N+1 Select query problem in Hibernate and how to solve it?
+java-289|289. What is the difference between FetchType.LAZY and FetchType.EAGER?
+java-290|290. What is Optimistic Locking (@Version) vs Pessimistic Locking in JPA?
+java-291|291. What is Flyway / Liquibase database migration in Java applications?
+java-292|292. What is Jackson ObjectMapper customization for JSON serialization?
+java-293|293. What is MapStruct for high-performance DTO mapping?
+java-294|294. What is Reactive Programming with Project Reactor (Mono & Flux)?
+java-295|295. What is backpressure in Reactive Streams?
+java-296|296. What is netty event loop model in Spring WebFlux?
+java-297|297. What is gRPC vs REST API performance in Java microservices?
+java-298|298. What is Protocol Buffers (Protobuf) binary format?
+java-299|299. What is Apache Kafka Consumer Group rebalance strategy?
+java-300|300. What is Kafka Producer ack level (acks=0, acks=1, acks=all)?
+java-301|301. What is Kafka idempotent producer and transactional producer?
+java-302|302. What is Redis Caching strategies (Cache-Aside, Write-Through, Write-Behind)?
+java-303|303. What is Cache Stampede (Thundering Herd) and how to prevent it in Java?
+java-304|304. What is Distributed Lock using Redis Redlock or ShedLock in Java?
+java-305|305. What is Java Native Interface (JNI) and Java Foreign Function & Memory API (Panama)?
+java-306|306. What is GraalVM Native Image vs JVM Bytecode execution?
+java-307|307. What is Ahead-Of-Time (AOT) compilation?
+java-308|308. What is Startup time vs Peak Throughput trade-off in GraalVM?
+java-309|309. What is Docker containerization best practices for Java applications?
+java-310|310. What is JVM container awareness (-XX:+UseContainerSupport)?
+java-311|311. What is Kubernetes Liveness and Readiness Probes in Spring Boot Actuator?
+java-312|312. What is Graceful Shutdown in Spring Boot microservices?
+java-313|313. What is Structured Concurrency in Java 21?
+java-314|314. What is Scoped Values in Java 21 replacing ThreadLocal?
+java-315|315. What is Foreign Function & Memory API in Java 22?
+java-316|316. What is String Templates in Java 21/22?
+java-317|317. What is Unnamed Variables & Patterns (_) in Java 22?
+java-318|318. What is Implicitly Declared Classes and Main Methods in Java 21/22?
+java-319|319. What is Vector API for SIMD parallel computations in Java?
+java-320|320. What is SOLID Design Principles with Java code examples?
+java-321|321. What is Singleton Pattern (Thread-safe Bill Pugh Singleton)?
+java-322|322. What is Factory Method Pattern vs Abstract Factory Pattern?
+java-323|323. What is Builder Pattern with Fluent Interface?
+java-324|324. What is Prototype Pattern and Cloneable interface?
+java-325|325. What is Adapter Pattern with real-world Java examples?
+java-326|326. What is Decorator Pattern (e.g. Java IO InputStream)?
+java-327|327. What is Proxy Pattern (Static vs Dynamic Proxy)?
+java-328|328. What is Strategy Pattern with Functional Interfaces / Lambdas?
+java-329|329. What is Observer Pattern with EventListener in Java?
+java-330|330. What is Template Method Pattern vs Strategy Pattern?
+java-331|331. What is State Pattern for finite state machines?
+java-332|332. What is Chain of Responsibility Pattern (Servlet Filter Chain)?
+java-333|333. What is Command Pattern for transaction rollback?
+java-334|334. What is Mediator Pattern in microservices messaging?
+java-335|335. What is Flyweight Pattern for memory optimization?
+java-336|336. What is Facade Pattern for complex subsystem abstraction?
+java-337|337. What is Composite Pattern for tree structures?
+java-338|338. What is Bridge Pattern separating abstraction from implementation?
+java-339|339. What is Visitor Pattern for AST traversal?
+java-340|340. How to implement an LRU Cache using LinkedHashMap in Java?
+java-341|341. How to build a Rate Limiter using Token Bucket algorithm in Java?
+java-342|342. How to build a Thread-Safe In-Memory Cache with TTL expiration?
+java-343|343. How to implement Producer-Consumer pattern using ArrayBlockingQueue?
+java-344|344. How to reverse a Singly Linked List in Java?
+java-345|345. How to detect loop in Linked List using Floyd's Cycle Detection?
+java-346|346. How to find 2nd largest element in array in O(N) time?
+java-347|347. How to check if two strings are Anagrams in O(N) time?
+java-348|348. How to find longest substring without repeating characters?
+java-349|349. How to implement Binary Search recursively and iteratively?
+java-350|350. How to implement QuickSort algorithm in Java?
+java-351|351. How to implement MergeSort algorithm in Java?
+java-352|352. How to solve 2-Sum problem using HashMap in O(N) time?
+java-353|353. How to solve 3-Sum problem using 2-pointer approach?
+java-354|354. How to find lowest common ancestor (LCA) in Binary Tree?
+java-355|355. How to perform BFS (Level Order Traversal) in Binary Tree?
+java-356|356. How to perform DFS (Inorder, Preorder, Postorder) in Binary Tree?
+java-357|357. How to find maximum path sum in Binary Tree?
+java-358|358. How to implement Trie (Prefix Tree) data structure in Java?
+java-359|359. How to solve LRU Cache using Doubly Linked List and HashMap?
+java-360|360. How to solve LFU Cache (Least Frequently Used)?
+java-361|361. How to implement Min-Heap / PriorityQueue from scratch?
+java-362|362. How to solve Topological Sort in Directed Acyclic Graph (DAG)?
+java-363|363. How to find shortest path using Dijkstra Algorithm in Java?
+java-364|364. How to detect cycle in Undirected Graph using BFS/DFS?
+java-365|365. How to detect cycle in Directed Graph using Recursion Stack?
+java-366|366. How to solve 0/1 Knapsack problem using Dynamic Programming?
+java-367|367. How to find Longest Common Subsequence (LCS) using DP?
+java-368|368. How to find Longest Increasing Subsequence (LIS) in O(N log N)?
+java-369|369. How to solve Coin Change problem using Dynamic Programming?
+java-370|370. How to solve House Robber problem using Dynamic Programming?
+java-371|371. How to solve Word Break problem using DP and Trie?
+java-372|372. How to solve Median of Two Sorted Arrays in O(log(M+N))?
+java-373|373. How to solve Trapping Rain Water problem using 2 pointers?
+java-374|374. How to design URL Shortener system architecture in Java?
+java-375|375. How to design Scalable Chat Application in Java/Spring WebFlux?
