@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { JAVA_TOPICS, JAVA_QUESTIONS } from "./java/javaData";
 import { JAVA_KEYWORD_DEFINITIONS } from "./java/javaKeywordsData";
@@ -36,6 +36,7 @@ export const Navbar = ({
 }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const searchInputRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,6 +52,24 @@ export const Navbar = ({
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    // Listen for Alt+R to open and focus search bar
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if ((e.altKey && (e.key === "r" || e.key === "R")) || ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
+                e.preventDefault();
+                if (searchInputRef.current) {
+                    searchInputRef.current.focus();
+                    setIsSearchFocused(true);
+                }
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
         };
     }, []);
 
@@ -222,21 +241,26 @@ export const Navbar = ({
                         <div className={`relative transition-all duration-300 ${isScrolled ? "w-28 sm:w-44 focus-within:w-56" : "hidden sm:flex w-44 focus-within:w-60"}`}>
                             <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-zinc-500" />
                             <input
+                                ref={searchInputRef}
                                 type="text"
-                                placeholder="Search questions..."
+                                placeholder=" Alt+R"
                                 value={searchTerm || ""}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onFocus={() => setIsSearchFocused(true)}
                                 onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                                className={`w-full pl-8 pr-6 text-xs rounded-full bg-slate-100 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-500 dark:bg-zinc-900/90 dark:border-zinc-800 dark:text-zinc-200 dark:placeholder-zinc-500 dark:focus:border-zinc-500 transition-all duration-200 ${isScrolled ? "py-1" : "py-1.5"}`}
+                                className={`w-full pl-8 pr-12 text-xs rounded-full bg-slate-100 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-500 dark:bg-zinc-900/90 dark:border-zinc-800 dark:text-zinc-200 dark:placeholder-zinc-500 dark:focus:border-zinc-500 transition-all duration-200 ${isScrolled ? "py-1" : "py-1.5"}`}
                             />
-                            {searchTerm && (
+                            {searchTerm ? (
                                 <button
                                     onClick={() => setSearchTerm("")}
                                     className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-zinc-500 dark:hover:text-zinc-300 text-xs font-bold"
                                 >
                                     ✕
                                 </button>
+                            ) : (
+                                <kbd className="hidden sm:inline-flex items-center gap-0.5 absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[9px] font-mono font-semibold rounded text-slate-600  pointer-events-none">
+
+                                </kbd>
                             )}
 
                             {/* Search Suggestions Dropdown (Shows max ~5 options in view with full scrollable list) */}
