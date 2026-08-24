@@ -253,8 +253,12 @@ export const Landingpage = ({ onNavigate }) => {
             {/* Footer Banner CTA */}
             <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200 dark:border-zinc-900">
                 <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 text-center space-y-6  ">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-black mx-auto flex items-center justify-center  ">
-                        <Bookmark className="w-6 h-6" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
+                        <img
+                            src="/logo.png"
+                            alt="ReCall Logo"
+                            className="w-full h-full object-contain brightness-0 dark:invert"
+                        />
                     </div>
 
                     <div className="space-y-2 max-w-2xl mx-auto">

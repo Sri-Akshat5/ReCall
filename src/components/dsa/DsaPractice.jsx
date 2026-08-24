@@ -12,7 +12,12 @@ import {
   Trophy,
   Zap,
   ListFilter,
-  FolderTree
+  FolderTree,
+  CheckSquare,
+  Square,
+  CheckCircle2,
+  Table as TableIcon,
+  LayoutList
 } from "lucide-react";
 import {
   TOP_75_QUESTIONS,
@@ -52,7 +57,36 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
   const [selectedCompany, setSelectedCompany] = useState("All Companies");
   const [selectedSort, setSelectedSort] = useState("Default Rank");
   const [viewMode, setViewMode] = useState("byTopic"); // 'byTopic' | 'all'
+  const [displayFormat, setDisplayFormat] = useState("table"); // 'table' | 'cards'
+  const [showOnlySolved, setShowOnlySolved] = useState(false);
   const [localSearch, setLocalSearch] = useState(globalSearchTerm || "");
+
+  // Local storage for marked solved / completed question IDs
+  const [solvedQuestionIds, setSolvedQuestionIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem("recall_solved_dsa_questions");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const toggleSolvedQuestion = (leetcodeId) => {
+    setSolvedQuestionIds((prev) => {
+      const isSolved = prev.includes(leetcodeId);
+      const updated = isSolved
+        ? prev.filter((id) => id !== leetcodeId)
+        : [...prev, leetcodeId];
+
+      try {
+        localStorage.setItem("recall_solved_dsa_questions", JSON.stringify(updated));
+      } catch (err) {
+        console.error("Failed to save to localStorage", err);
+      }
+
+      return updated;
+    });
+  };
 
   // Keep state synced with URL changes
   useEffect(() => {
@@ -65,7 +99,7 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
     setActiveSheet(sheetKey);
     navigate(`/dsa/${sheetKey}`);
   };
-  
+
   // Track open accordion states
   const [expandedTopics, setExpandedTopics] = useState({});
   const [expandedSteps, setExpandedSteps] = useState({ "Step 1": true, "Step 2": true, "Step 3": true });
@@ -86,6 +120,11 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
     const query = (localSearch || globalSearchTerm || "").toLowerCase().trim();
 
     const filtered = questions.filter((q) => {
+      // Solved Only Filter
+      if (showOnlySolved && !solvedQuestionIds.includes(q.leetcode_id)) {
+        return false;
+      }
+
       // Topic match
       if (
         selectedTopic !== "All Topics" &&
@@ -145,7 +184,9 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
     selectedCompany,
     selectedSort,
     localSearch,
-    globalSearchTerm
+    globalSearchTerm,
+    showOnlySolved,
+    solvedQuestionIds
   ]);
 
   // Group questions by Topic / Category
@@ -180,7 +221,7 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
 
   return (
     <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto overflow-x-hidden w-full">
-      {/* Header Banner (Matches JavaInterview.jsx design) */}
+      {/* Header Banner */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
@@ -196,19 +237,31 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
             </p>
           </div>
 
-          <div className="px-4 py-2 rounded-2xl bg-slate-100 border border-slate-200 text-center font-mono dark:bg-zinc-900 dark:border-zinc-800">
-            <span className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              {processedQuestions.length}
-            </span>
-            <p className="text-[10px] text-slate-500 dark:text-zinc-400">
-              Problems Matched
-            </p>
+          <div className="flex items-center gap-3">
+            <div className="px-4 py-2 rounded-2xl bg-emerald-50 border border-emerald-200 text-center font-mono dark:bg-emerald-950/40 dark:border-emerald-900">
+              <span className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                {solvedQuestionIds.length}
+              </span>
+              <p className="text-[10px] text-emerald-700 dark:text-emerald-300 font-bold">
+                Solved
+              </p>
+            </div>
+
+            <div className="px-4 py-2 rounded-2xl bg-slate-100 border border-slate-200 text-center font-mono dark:bg-zinc-900 dark:border-zinc-800">
+              <span className="text-2xl font-extrabold text-slate-900 dark:text-white">
+                {processedQuestions.length}
+              </span>
+              <p className="text-[10px] text-slate-500 dark:text-zinc-400">
+                Matched
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Tab Switcher, View Mode Toggle & Filter Bar */}
         <div className="pt-4 border-t border-slate-200 dark:border-zinc-900 space-y-4">
-          {/* Top Row: Sheet Switcher & View Mode Toggle */}
+          {/* Top Row: Sheet Switcher, Solved Filter & View Mode Toggle */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             {/* Sheet Selector Tabs */}
             <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
@@ -269,33 +322,77 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
               </button>
             </div>
 
-            {/* View Mode Toggle (Only for Top 75, Top 150, Top 250) */}
-            {activeSheet !== "a2z" && (
+            {/* Display & Filter Toggles */}
+            <div className="flex items-center gap-2 flex-wrap">
+              {/* Solved Only Filter Button */}
+              <button
+                onClick={() => setShowOnlySolved((prev) => !prev)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition flex items-center gap-1.5 border cursor-pointer ${
+                  showOnlySolved
+                    ? "bg-emerald-600 text-white border-emerald-600 dark:bg-emerald-500 dark:text-black"
+                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800"
+                }`}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Solved ({solvedQuestionIds.length})</span>
+              </button>
+
+              {/* Layout Switcher (Table vs Card List) */}
               <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shrink-0">
                 <button
-                  onClick={() => setViewMode("byTopic")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1.5 cursor-pointer ${
-                    viewMode === "byTopic"
+                  onClick={() => setDisplayFormat("table")}
+                  title="Table Format"
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer ${
+                    displayFormat === "table"
                       ? "bg-white text-slate-900 dark:bg-black dark:text-white"
                       : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
-                  <FolderTree className="w-3.5 h-3.5" />
-                  <span>Split by Topic</span>
+                  <TableIcon className="w-3.5 h-3.5" />
+                  <span>Table</span>
                 </button>
                 <button
-                  onClick={() => setViewMode("all")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1.5 cursor-pointer ${
-                    viewMode === "all"
+                  onClick={() => setDisplayFormat("cards")}
+                  title="Card List Format"
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer ${
+                    displayFormat === "cards"
                       ? "bg-white text-slate-900 dark:bg-black dark:text-white"
                       : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
-                  <ListFilter className="w-3.5 h-3.5" />
-                  <span>All Problems</span>
+                  <LayoutList className="w-3.5 h-3.5" />
+                  <span>Cards</span>
                 </button>
               </div>
-            )}
+
+              {/* View Mode Toggle (Only for Top 75, Top 150, Top 250) */}
+              {activeSheet !== "a2z" && (
+                <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shrink-0">
+                  <button
+                    onClick={() => setViewMode("byTopic")}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer ${
+                      viewMode === "byTopic"
+                        ? "bg-white text-slate-900 dark:bg-black dark:text-white"
+                        : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
+                    }`}
+                  >
+                    <FolderTree className="w-3.5 h-3.5" />
+                    <span>Split Topic</span>
+                  </button>
+                  <button
+                    onClick={() => setViewMode("all")}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer ${
+                      viewMode === "all"
+                        ? "bg-white text-slate-900 dark:bg-black dark:text-white"
+                        : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
+                    }`}
+                  >
+                    <ListFilter className="w-3.5 h-3.5" />
+                    <span>All List</span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Search & Filter Controls (5 Columns) */}
@@ -414,19 +511,30 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
                 </div>
 
                 {isExpanded && (
-                  <div className="divide-y divide-slate-100 dark:divide-zinc-900">
+                  <div>
                     {stepQuestions.length === 0 ? (
                       <div className="p-6 text-center text-xs text-slate-400 dark:text-zinc-500">
                         No problems match the selected filters in this step.
                       </div>
+                    ) : displayFormat === "table" ? (
+                      <QuestionTable
+                        questions={stepQuestions}
+                        getDifficultyBadge={getDifficultyBadge}
+                        solvedQuestionIds={solvedQuestionIds}
+                        toggleSolvedQuestion={toggleSolvedQuestion}
+                      />
                     ) : (
-                      stepQuestions.map((q) => (
-                        <QuestionRow
-                          key={`${q.leetcode_id}-${q.rank}`}
-                          q={q}
-                          getDifficultyBadge={getDifficultyBadge}
-                        />
-                      ))
+                      <div className="divide-y divide-slate-100 dark:divide-zinc-900">
+                        {stepQuestions.map((q) => (
+                          <QuestionRowCard
+                            key={`${q.leetcode_id}-${q.rank}`}
+                            q={q}
+                            getDifficultyBadge={getDifficultyBadge}
+                            solvedQuestionIds={solvedQuestionIds}
+                            toggleSolvedQuestion={toggleSolvedQuestion}
+                          />
+                        ))}
+                      </div>
                     )}
                   </div>
                 )}
@@ -449,7 +557,7 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
             </div>
           ) : (
             Object.entries(questionsByTopic).map(([topicName, topicQuestions]) => {
-              const isExpanded = expandedTopics[topicName] !== false; // expanded by default
+              const isExpanded = expandedTopics[topicName] !== false;
 
               return (
                 <div
@@ -481,14 +589,27 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
 
                   {/* Topic Questions List */}
                   {isExpanded && (
-                    <div className="divide-y divide-slate-100 dark:divide-zinc-900">
-                      {topicQuestions.map((q) => (
-                        <QuestionRow
-                          key={`${q.leetcode_id}-${q.rank}`}
-                          q={q}
+                    <div>
+                      {displayFormat === "table" ? (
+                        <QuestionTable
+                          questions={topicQuestions}
                           getDifficultyBadge={getDifficultyBadge}
+                          solvedQuestionIds={solvedQuestionIds}
+                          toggleSolvedQuestion={toggleSolvedQuestion}
                         />
-                      ))}
+                      ) : (
+                        <div className="divide-y divide-slate-100 dark:divide-zinc-900">
+                          {topicQuestions.map((q) => (
+                            <QuestionRowCard
+                              key={`${q.leetcode_id}-${q.rank}`}
+                              q={q}
+                              getDifficultyBadge={getDifficultyBadge}
+                              solvedQuestionIds={solvedQuestionIds}
+                              toggleSolvedQuestion={toggleSolvedQuestion}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -497,13 +618,8 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
           )}
         </div>
       ) : (
-        /* Flat Questions Bank Card List */
-        <div className="rounded-3xl border border-slate-200 bg-white dark:bg-zinc-950 dark:border-zinc-800 overflow-hidden divide-y divide-slate-100 dark:divide-zinc-900">
-          <div className="p-4 px-6 bg-slate-50 dark:bg-zinc-900/60 flex items-center justify-between text-[11px] font-mono uppercase font-bold text-slate-500 dark:text-zinc-400 border-b border-slate-200 dark:border-zinc-800">
-            <span>Problem Title &amp; Category</span>
-            <span>Difficulty &amp; Target Companies</span>
-          </div>
-
+        /* Flat Questions Bank List */
+        <div className="rounded-3xl border border-slate-200 bg-white dark:bg-zinc-950 dark:border-zinc-800 overflow-hidden">
           {processedQuestions.length === 0 ? (
             <div className="p-12 text-center space-y-3">
               <Brain className="w-10 h-10 text-slate-400 mx-auto" />
@@ -514,14 +630,29 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
                 Try adjusting your search query, topic, company, or difficulty filter.
               </p>
             </div>
+          ) : displayFormat === "table" ? (
+            <QuestionTable
+              questions={processedQuestions}
+              getDifficultyBadge={getDifficultyBadge}
+              solvedQuestionIds={solvedQuestionIds}
+              toggleSolvedQuestion={toggleSolvedQuestion}
+            />
           ) : (
-            processedQuestions.map((q) => (
-              <QuestionRow
-                key={q.leetcode_id}
-                q={q}
-                getDifficultyBadge={getDifficultyBadge}
-              />
-            ))
+            <div className="divide-y divide-slate-100 dark:divide-zinc-900">
+              <div className="p-4 px-6 bg-slate-50 dark:bg-zinc-900/60 flex items-center justify-between text-[11px] font-mono uppercase font-bold text-slate-500 dark:text-zinc-400 border-b border-slate-200 dark:border-zinc-800">
+                <span>Problem Title &amp; Category</span>
+                <span>Difficulty &amp; Target Companies</span>
+              </div>
+              {processedQuestions.map((q) => (
+                <QuestionRowCard
+                  key={q.leetcode_id}
+                  q={q}
+                  getDifficultyBadge={getDifficultyBadge}
+                  solvedQuestionIds={solvedQuestionIds}
+                  toggleSolvedQuestion={toggleSolvedQuestion}
+                />
+              ))}
+            </div>
           )}
         </div>
       )}
@@ -529,12 +660,179 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
   );
 };
 
-// Clean sub-component for rendering a single question row matching ReCall design
-const QuestionRow = ({ q, getDifficultyBadge }) => {
+// Sub-component for rendering company tags with hover tooltip for extra companies (+N)
+const CompanyTags = ({ companies }) => {
+  const visible = companies.slice(0, 3);
+  const extra = companies.slice(3);
+
   return (
-    <div className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:bg-slate-50/80 dark:hover:bg-zinc-900/40">
-      {/* Left side: ID, Title & Category */}
+    <div className="flex items-center gap-1 flex-wrap">
+      {visible.map((comp) => (
+        <span
+          key={comp}
+          className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800 shrink-0"
+        >
+          {comp}
+        </span>
+      ))}
+
+      {extra.length > 0 && (
+        <div className="relative group/comp inline-block">
+          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-slate-200 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300 font-bold cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-700 transition">
+            +{extra.length}
+          </span>
+
+          {/* Hover Tooltip Popup showing all tagged companies */}
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/comp:flex flex-col gap-1.5 p-2.5 rounded-2xl bg-slate-900 text-white dark:bg-zinc-950 dark:text-zinc-200 text-[10px] font-mono shadow-2xl border border-slate-700 dark:border-zinc-800 z-50 w-52 pointer-events-none transition-all">
+            <div className="text-[9px] uppercase font-bold text-slate-400 dark:text-zinc-500 pb-1 border-b border-slate-800 dark:border-zinc-900 flex items-center justify-between">
+              <span>Target Companies</span>
+              <span className="text-white dark:text-zinc-300 font-extrabold">{companies.length} Total</span>
+            </div>
+            <div className="flex flex-wrap gap-1 max-h-32 overflow-y-auto">
+              {companies.map((c) => (
+                <span
+                  key={c}
+                  className="px-1.5 py-0.5 rounded bg-slate-800 dark:bg-zinc-800 text-slate-200 dark:text-zinc-300 text-[10px]"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// HTML Table Format Component with uniform fixed column layout
+const QuestionTable = ({ questions, getDifficultyBadge, solvedQuestionIds, toggleSolvedQuestion }) => {
+  return (
+    <div className="overflow-x-auto w-full">
+      <table className="w-full text-left border-collapse font-sans min-w-[760px]">
+        <thead>
+          <tr className="bg-slate-50/90 dark:bg-zinc-900/80 border-b border-slate-200 dark:border-zinc-800 text-[11px] font-mono uppercase font-bold text-slate-500 dark:text-zinc-400">
+            <th className="py-3 px-4 w-16 text-center">Status</th>
+            <th className="py-3 px-3 w-16">ID</th>
+            <th className="py-3 px-4 min-w-[200px]">Problem Title</th>
+            <th className="py-3 px-4 w-40">Category</th>
+            <th className="py-3 px-4 w-28">Difficulty</th>
+            <th className="py-3 px-4 w-52">Top Companies</th>
+            <th className="py-3 px-4 w-24 text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-slate-100 dark:divide-zinc-900 text-xs">
+          {questions.map((q) => {
+            const isSolved = solvedQuestionIds.includes(q.leetcode_id);
+            return (
+              <tr
+                key={`${q.leetcode_id}-${q.rank}`}
+                className={`transition items-center hover:bg-slate-50/90 dark:hover:bg-zinc-900/50 ${
+                  isSolved ? "bg-emerald-50/30 dark:bg-emerald-950/15" : ""
+                }`}
+              >
+                {/* Status Checkbox Column */}
+                <td className="py-3.5 px-4 text-center align-middle">
+                  <button
+                    onClick={() => toggleSolvedQuestion(q.leetcode_id)}
+                    title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+                    className="p-1 rounded-lg text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition cursor-pointer"
+                  >
+                    {isSolved ? (
+                      <CheckSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400 fill-emerald-100 dark:fill-emerald-950" />
+                    ) : (
+                      <Square className="w-4 h-4 text-slate-300 dark:text-zinc-600" />
+                    )}
+                  </button>
+                </td>
+
+                {/* ID Column */}
+                <td className="py-3.5 px-3 align-middle">
+                  <span className="font-mono font-bold text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800">
+                    #{q.leetcode_id}
+                  </span>
+                </td>
+
+                {/* Title Column */}
+                <td className="py-3.5 px-4 align-middle font-extrabold text-slate-900 dark:text-white">
+                  <a
+                    href={q.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline inline-flex items-center gap-1.5"
+                  >
+                    <span className={isSolved ? "line-through text-slate-500 dark:text-zinc-500" : ""}>
+                      {q.title}
+                    </span>
+                  </a>
+                </td>
+
+                {/* Category Column */}
+                <td className="py-3.5 px-4 align-middle font-mono text-slate-600 dark:text-zinc-300 text-xs">
+                  {q.category || "General"}
+                </td>
+
+                {/* Difficulty Column */}
+                <td className="py-3.5 px-4 align-middle">
+                  <span
+                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold border ${getDifficultyBadge(
+                      q.difficulty
+                    )}`}
+                  >
+                    {q.difficulty}
+                  </span>
+                </td>
+
+                {/* Companies Column with +N hover tooltip */}
+                <td className="py-3.5 px-4 align-middle">
+                  <CompanyTags companies={q.companies} />
+                </td>
+
+                {/* Action Column */}
+                <td className="py-3.5 px-4 align-middle text-right">
+                  <a
+                    href={q.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-xl text-[11px] font-mono font-bold bg-slate-900 text-white dark:bg-white dark:text-black hover:bg-slate-800 dark:hover:bg-zinc-200 transition cursor-pointer"
+                  >
+                    <span>Solve</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+// Card Row format component for alternative view mode
+const QuestionRowCard = ({ q, getDifficultyBadge, solvedQuestionIds, toggleSolvedQuestion }) => {
+  const isSolved = solvedQuestionIds.includes(q.leetcode_id);
+
+  return (
+    <div
+      className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:bg-slate-50/80 dark:hover:bg-zinc-900/40 ${
+        isSolved ? "bg-emerald-50/30 dark:bg-emerald-950/15" : ""
+      }`}
+    >
+      {/* Left side: Solved Checkbox, ID, Title & Category */}
       <div className="flex items-start sm:items-center gap-3.5 min-w-0">
+        <button
+          onClick={() => toggleSolvedQuestion(q.leetcode_id)}
+          title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+          className="p-1 rounded-lg text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition cursor-pointer shrink-0 mt-0.5 sm:mt-0"
+        >
+          {isSolved ? (
+            <CheckSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400 fill-emerald-100 dark:fill-emerald-950" />
+          ) : (
+            <Square className="w-4 h-4 text-slate-300 dark:text-zinc-600" />
+          )}
+        </button>
+
         <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800 shrink-0">
           #{q.leetcode_id}
         </span>
@@ -547,7 +845,9 @@ const QuestionRow = ({ q, getDifficultyBadge }) => {
               rel="noopener noreferrer"
               className="text-sm font-extrabold text-slate-900 dark:text-white hover:underline flex items-center gap-1.5"
             >
-              <span>{q.title}</span>
+              <span className={isSolved ? "line-through text-slate-500 dark:text-zinc-500" : ""}>
+                {q.title}
+              </span>
               <ExternalLink className="w-3.5 h-3.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition" />
             </a>
           </div>
@@ -562,22 +862,7 @@ const QuestionRow = ({ q, getDifficultyBadge }) => {
 
       {/* Right side: Companies & Difficulty Badge */}
       <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap justify-between sm:justify-end shrink-0">
-        {/* Companies tags */}
-        <div className="flex items-center gap-1.5 flex-wrap max-w-[260px] sm:max-w-xs">
-          {q.companies.slice(0, 4).map((comp) => (
-            <span
-              key={comp}
-              className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800"
-            >
-              {comp}
-            </span>
-          ))}
-          {q.companies.length > 4 && (
-            <span className="text-[10px] font-mono text-slate-400 dark:text-zinc-500">
-              +{q.companies.length - 4}
-            </span>
-          )}
-        </div>
+        <CompanyTags companies={q.companies} />
 
         {/* Difficulty Badge */}
         <span

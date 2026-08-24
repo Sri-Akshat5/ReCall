@@ -174,10 +174,14 @@ export const Navbar = ({
                         title="ReCall Home"
                     >
                         <div
-                            className={`rounded-xl bg-slate-900 text-white border border-slate-800 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-950 dark:border-zinc-700/60 flex items-center justify-center group-hover:border-slate-600 dark:group-hover:border-zinc-500 transition-all duration-300 ${isScrolled ? "w-7 h-7 sm:w-8 sm:h-8" : "w-9 h-9"
+                            className={`flex items-center justify-center transition-all duration-300 ${isScrolled ? "w-8 h-8 sm:w-9 sm:h-9" : "w-10 h-10 sm:w-11 sm:h-11"
                                 }`}
                         >
-                            <Bookmark className={`text-white group-hover:scale-110 transition-transform duration-200 ${isScrolled ? "w-3.5 h-3.5" : "w-4 h-4"}`} />
+                            <img
+                                src="/logo.png"
+                                alt="ReCall Logo"
+                                className="w-full h-full object-contain brightness-0 dark:invert group-hover:scale-110 transition-transform duration-200"
+                            />
                         </div>
 
                         {!isScrolled ? (
@@ -243,24 +247,20 @@ export const Navbar = ({
                             <input
                                 ref={searchInputRef}
                                 type="text"
-                                placeholder=" Alt+R"
+                                placeholder="Search... (Alt+R)"
                                 value={searchTerm || ""}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onFocus={() => setIsSearchFocused(true)}
                                 onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                                className={`w-full pl-8 pr-12 text-xs rounded-full bg-slate-100 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-500 dark:bg-zinc-900/90 dark:border-zinc-800 dark:text-zinc-200 dark:placeholder-zinc-500 dark:focus:border-zinc-500 transition-all duration-200 ${isScrolled ? "py-1" : "py-1.5"}`}
+                                className={`w-full pl-8 pr-7 text-xs rounded-full bg-slate-100 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-500 dark:bg-zinc-900/90 dark:border-zinc-800 dark:text-zinc-200 dark:placeholder-zinc-500 dark:focus:border-zinc-500 transition-all duration-200 ${isScrolled ? "py-1" : "py-1.5"}`}
                             />
-                            {searchTerm ? (
+                            {searchTerm && (
                                 <button
                                     onClick={() => setSearchTerm("")}
                                     className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-zinc-500 dark:hover:text-zinc-300 text-xs font-bold"
                                 >
                                     ✕
                                 </button>
-                            ) : (
-                                <kbd className="hidden sm:inline-flex items-center gap-0.5 absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[9px] font-mono font-semibold rounded text-slate-600  pointer-events-none">
-
-                                </kbd>
                             )}
 
                             {/* Search Suggestions Dropdown (Shows max ~5 options in view with full scrollable list) */}
