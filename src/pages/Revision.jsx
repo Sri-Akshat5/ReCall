@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import JavaRevision from "../components/java/JavaRevision";
 import CollectionJava from "../components/java/CollectionJava";
+import DsaRevision from "../components/dsa/DsaRevision";
 import {
   Code2,
   Layers,
@@ -17,7 +19,18 @@ import {
 } from "lucide-react";
 
 export const Revision = ({ targetRecallKey, onClearTargetKey, onNavigateToInterview }) => {
-  const [selectedSubject, setSelectedSubject] = useState(targetRecallKey ? "java" : null);
+  const [searchParams] = useSearchParams();
+  const subjectFromUrl = searchParams.get("subject");
+
+  const [selectedSubject, setSelectedSubject] = useState(
+    targetRecallKey ? "java" : (subjectFromUrl || null)
+  );
+
+  useEffect(() => {
+    if (subjectFromUrl) {
+      setSelectedSubject(subjectFromUrl);
+    }
+  }, [subjectFromUrl]);
 
   // If a target recall key is provided (e.g. from keyword click in QA bank), automatically open Java deck
   useEffect(() => {
@@ -27,6 +40,16 @@ export const Revision = ({ targetRecallKey, onClearTargetKey, onNavigateToInterv
   }, [targetRecallKey]);
 
   const subjects = [
+    {
+      id: "dsa",
+      name: "DSA Study Material & Pattern Recognition Suite",
+      desc: "Comprehensive theoretical concepts for all Data Structures & Algorithms (Arrays, Lists, Trees, Graphs, DP) + Pattern Recognition Guide for 20 essential coding patterns.",
+      icon: Workflow,
+      cardCount: 200,
+      active: true,
+      badge: "Active Deck",
+      tags: ["Core Theory & Proofs", "20 Coding Patterns", "Pattern Recognition", "Memory Mnemonics"]
+    },
     {
       id: "java",
       name: "Core Java & JVM Master Revision",
@@ -44,7 +67,7 @@ export const Revision = ({ targetRecallKey, onClearTargetKey, onNavigateToInterv
       icon: Database,
       cardCount: 150,
       active: true,
-      badge: "New Active Module",
+      badge: "Active Deck",
       tags: ["HashMap Internals", "PECS Generics", "Concurrent Collections", "Complexity Matrix"]
     },
     {
@@ -78,6 +101,33 @@ export const Revision = ({ targetRecallKey, onClearTargetKey, onNavigateToInterv
       tags: ["OAuth2", "JWT", "HTTPS", "CORS"]
     }
   ];
+
+  // If DSA subject selected, render DsaRevision module
+  if (selectedSubject === "dsa") {
+    return (
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => {
+              setSelectedSubject(null);
+              if (onClearTargetKey) onClearTargetKey();
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-300 text-slate-800 hover:bg-slate-100 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800 text-xs font-bold transition cursor-pointer active:scale-95"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to All Decks</span>
+          </button>
+        </div>
+
+        <DsaRevision
+          onBackToRevision={() => {
+            setSelectedSubject(null);
+            if (onClearTargetKey) onClearTargetKey();
+          }}
+        />
+      </div>
+    );
+  }
 
   // If Java subject selected, render JavaRecall module
   if (selectedSubject === "java") {

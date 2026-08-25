@@ -17,7 +17,9 @@ import {
   Square,
   CheckCircle2,
   Table as TableIcon,
-  LayoutList
+  LayoutList,
+  BookOpen,
+  ArrowRight
 } from "lucide-react";
 import {
   TOP_75_QUESTIONS,
@@ -237,7 +239,16 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
+            <button
+              onClick={() => navigate("/revise?subject=dsa")}
+              className="px-4 py-2 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold transition shadow-sm inline-flex items-center gap-2 cursor-pointer active:scale-95"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>DSA Theory &amp; 20 Patterns</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+
             <div className="px-4 py-2 rounded-2xl bg-emerald-50 border border-emerald-200 text-center font-mono dark:bg-emerald-950/40 dark:border-emerald-900">
               <span className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -569,10 +580,21 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
                     onClick={() => toggleTopic(topicName)}
                     className="p-5 flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-zinc-900/50 transition border-b border-slate-100 dark:border-zinc-900"
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-wrap">
                       <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-900 text-white dark:bg-white dark:text-black">
                         {topicName}
                       </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate("/revise?subject=dsa");
+                        }}
+                        title={`Study ${topicName} theoretical notes & 20 patterns`}
+                        className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800 border border-blue-200 transition inline-flex items-center gap-1.5 cursor-pointer active:scale-95"
+                      >
+                        <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                        <span>Revise {topicName} Theory</span>
+                      </button>
                       <span className="text-xs text-slate-500 dark:text-zinc-400 font-mono">
                         {topicQuestions.length} {topicQuestions.length === 1 ? "Problem" : "Problems"}
                       </span>
@@ -707,6 +729,8 @@ const CompanyTags = ({ companies }) => {
 
 // HTML Table Format Component with uniform fixed column layout
 const QuestionTable = ({ questions, getDifficultyBadge, solvedQuestionIds, toggleSolvedQuestion }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="overflow-x-auto w-full">
       <table className="w-full text-left border-collapse font-sans min-w-[760px]">
@@ -769,7 +793,18 @@ const QuestionTable = ({ questions, getDifficultyBadge, solvedQuestionIds, toggl
 
                 {/* Category Column */}
                 <td className="py-3.5 px-4 align-middle font-mono text-slate-600 dark:text-zinc-300 text-xs">
-                  {q.category || "General"}
+                  {q.category ? (
+                    <button
+                      onClick={() => navigate("/revise?subject=dsa")}
+                      title={`Revise ${q.category} theory & 20 patterns`}
+                      className="text-blue-600 dark:text-blue-400 font-bold hover:underline inline-flex items-center gap-1 cursor-pointer"
+                    >
+                      <BookOpen className="w-3 h-3 shrink-0" />
+                      <span>{q.category}</span>
+                    </button>
+                  ) : (
+                    "General"
+                  )}
                 </td>
 
                 {/* Difficulty Column */}
@@ -811,6 +846,7 @@ const QuestionTable = ({ questions, getDifficultyBadge, solvedQuestionIds, toggl
 
 // Card Row format component for alternative view mode
 const QuestionRowCard = ({ q, getDifficultyBadge, solvedQuestionIds, toggleSolvedQuestion }) => {
+  const navigate = useNavigate();
   const isSolved = solvedQuestionIds.includes(q.leetcode_id);
 
   return (
@@ -853,8 +889,16 @@ const QuestionRowCard = ({ q, getDifficultyBadge, solvedQuestionIds, toggleSolve
           </div>
 
           {q.category && (
-            <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-400">
-              Category: <strong className="text-slate-700 dark:text-zinc-300 font-semibold">{q.category}</strong>
+            <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-400 flex items-center gap-1 mt-0.5">
+              <span>Category:</span>
+              <button
+                onClick={() => navigate("/revise?subject=dsa")}
+                title={`Revise ${q.category} core theory & 20 patterns`}
+                className="text-blue-600 dark:text-blue-400 font-bold hover:underline inline-flex items-center gap-1 cursor-pointer"
+              >
+                <BookOpen className="w-3 h-3 shrink-0" />
+                <span>{q.category}</span>
+              </button>
             </span>
           )}
         </div>
