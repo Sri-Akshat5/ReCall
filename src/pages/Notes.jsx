@@ -181,7 +181,7 @@ export const Notes = ({ onNavigateToTab }) => {
     });
 
     return (
-        <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto overflow-x-hidden w-full pb-24 select-none">
+        <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto overflow-x-hidden w-full pb-24 min-h-[85vh] select-none">
 
             {/* Terms Disclaimer Modal */}
             <NotesDisclaimerModal
@@ -201,24 +201,24 @@ export const Notes = ({ onNavigateToTab }) => {
                 </div>
             )}
 
-            {/* Header Banner */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4 relative overflow-hidden">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div className="space-y-1">
-
-                        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            {/* Compact Header Banner */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-3 relative overflow-hidden">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="space-y-0.5">
+                        <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <Edit3 className="w-4 h-4 text-slate-700 dark:text-zinc-300" />
                             My Notes Workspace &amp; History
                         </h1>
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
-                            Create, organize, and revise personal technical study notes.
+                        <p className="text-xs text-slate-500 dark:text-zinc-400">
+                            Create, organize, and revise personal technical study notes saved locally in browser.
                         </p>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-2">
                         <button
                             onClick={() => handleOpenEditor()}
-                            className="px-4 py-2.5 rounded-2xl bg-amber-500 text-black hover:bg-amber-400 font-bold text-xs transition border border-amber-400 flex items-center gap-2 cursor-pointer active:scale-95"
+                            className="px-3.5 py-1.5 rounded-xl bg-amber-500 text-black hover:bg-amber-400 font-bold text-xs transition border border-amber-400 flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
                         >
                             <Plus className="w-4 h-4" />
                             <span>Create New Note</span>
@@ -226,12 +226,12 @@ export const Notes = ({ onNavigateToTab }) => {
                     </div>
                 </div>
 
-                {/* Disclaimer Warning Box */}
-                <div className="p-3.5 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
-                    <div className="flex items-center gap-2 text-slate-700 dark:text-zinc-300 font-medium">
-                        <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
+                {/* Compact Disclaimer Warning Box */}
+                <div className="p-2.5 rounded-xl bg-amber-500/5 border border-amber-500/20 flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-slate-700 dark:text-zinc-300 text-[11px] font-medium">
+                        <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                         <span>
-                            <strong>Note:</strong> Notes are saved directly in your local browser storage. We do not save notes on external servers. Do not clear site data if you wish to retain your notes.
+                            Notes are saved directly in local browser storage. Clearing browser data will remove notes.
                         </span>
                     </div>
 
@@ -239,7 +239,7 @@ export const Notes = ({ onNavigateToTab }) => {
                         onClick={() => setShowDisclaimerModal(true)}
                         className="text-[11px] font-mono font-bold text-amber-600 dark:text-amber-400 hover:underline cursor-pointer"
                     >
-                        Read Full Terms &amp; Conditions ➔
+                        Read Full Terms ➔
                     </button>
                 </div>
             </div>

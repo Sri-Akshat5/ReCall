@@ -102,25 +102,21 @@ export const JavaInterview = ({ onSelectRecallCard, searchTerm }) => {
   return (
     <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto overflow-x-hidden w-full">
 
-      {/* Header Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4  ">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-              <Code2 className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-              <span>Core Java & JVM Engineering Bank</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-              Java Technical Interview Q&A Bank (370+ Questions)
+      {/* Compact Header */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="space-y-0.5">
+            <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Code2 className="w-4 h-4 text-slate-700 dark:text-zinc-300" />
+              Java Technical Interview Q&A Bank
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-2xl">
-              Curated interview responses formatted for real-world senior engineering interviews. Click any <span className="underline underline-offset-4 decoration-slate-400 font-semibold text-slate-900 dark:text-white">underlined keyword</span> to trigger instant active recall flashcards.
+            <p className="text-xs text-slate-500 dark:text-zinc-400">
+              Senior engineering responses with interactive active recall flashcards.
             </p>
           </div>
 
-          <div className="px-4 py-2 rounded-2xl bg-slate-100 border border-slate-200 text-center font-mono dark:bg-zinc-900 dark:border-zinc-800">
-            <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{filteredQuestions.length}</span>
-            <p className="text-[10px] text-slate-500 dark:text-zinc-400">Questions Matched</p>
+          <div className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-700 dark:text-zinc-300 font-bold shrink-0">
+            {filteredQuestions.length} Matched
           </div>
         </div>
 

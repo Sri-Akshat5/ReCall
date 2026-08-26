@@ -61,26 +61,20 @@ export const SystemDesignInterview = ({ onSelectRecallCard, searchTerm = "" }) =
 
   return (
     <section className="space-y-6 font-sans pb-12" id="sd-interview-qa-section">
-      {/* Header Banner */}
-      <header className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4" id="sd-interview-qa-header">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold uppercase tracking-wider">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>Senior Distributed Systems & HLD Q&A Bank</span>
-          </div>
-
-          <div className="text-xs font-mono text-slate-500 dark:text-zinc-400">
-            Total Questions: <span className="text-slate-900 dark:text-white font-bold">{SYSTEM_DESIGN_QUESTIONS.length} Questions</span>
-          </div>
+      {/* Compact Header Banner */}
+      <header className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" id="sd-interview-qa-header">
+        <div className="space-y-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <Cpu className="w-4 h-4 text-amber-500" />
+            System Design & Architecture Q&A
+          </h1>
+          <p className="text-xs text-slate-500 dark:text-zinc-400">
+            Distributed systems Q&As, production examples & HLD/LLD blueprints.
+          </p>
         </div>
 
-        <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            System Design & Architecture Interview Q&A
-          </h1>
-          <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-3xl leading-relaxed">
-            Master high-frequency distributed systems interview questions paired with production engineering examples and direct links to comprehensive HLD/LLD architectural blueprints.
-          </p>
+        <div className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-700 dark:text-zinc-300 font-bold shrink-0 self-start sm:self-auto">
+          {SYSTEM_DESIGN_QUESTIONS.length} Questions
         </div>
       </header>
 

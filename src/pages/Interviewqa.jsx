@@ -165,18 +165,19 @@ export const Interviewqa = ({ onSelectRecallCard, searchTerm }) => {
 
   return (
     <div className="space-y-8 font-sans">
-      {/* Portal Header */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-          <Sparkles className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-          <span>Multi-Domain Technical Question Bank</span>
-        </div>
-
-        <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Interview QA Hub</h1>
-          <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
-            Select a technical subject box below to explore curated interview questions, golden answer lines, comparison tables, and active recall keyword links.
+      {/* Compact Header */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="space-y-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <Sparkles className="w-4.5 h-4.5 text-slate-700 dark:text-zinc-300" />
+            Interview QA Hub
+          </h1>
+          <p className="text-xs text-slate-500 dark:text-zinc-400">
+            Curated technical interview questions, golden answer lines & active recall keywords.
           </p>
+        </div>
+        <div className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-600 dark:text-zinc-400 shrink-0 self-start sm:self-auto">
+          3 Technical Domains
         </div>
       </div>
 

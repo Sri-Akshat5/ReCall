@@ -223,49 +223,36 @@ export const DsaPractice = ({ globalSearchTerm = "", setGlobalSearchTerm }) => {
 
   return (
     <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto overflow-x-hidden w-full">
-      {/* Header Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-              <Code2 className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-              <span>DSA Practice &amp; Problem Bank</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-              Data Structures &amp; Algorithms Interview Bank
+      {/* Compact Header Banner */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="space-y-0.5">
+            <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Code2 className="w-4 h-4 text-slate-700 dark:text-zinc-300" />
+              Data Structures & Algorithms Interview Bank
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-2xl">
-              Curated high-frequency LeetCode questions categorized by topic for targeted interview prep.
+            <p className="text-xs text-slate-500 dark:text-zinc-400">
+              Curated high-frequency LeetCode questions categorized by topic.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={() => navigate("/revise?subject=dsa")}
-              className="px-4 py-2 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold transition shadow-sm inline-flex items-center gap-2 cursor-pointer active:scale-95"
+              className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold transition inline-flex items-center gap-1.5 cursor-pointer active:scale-95"
             >
-              <BookOpen className="w-4 h-4" />
-              <span>DSA Theory &amp; 20 Patterns</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>DSA Theory & 20 Patterns</span>
+              <ArrowRight className="w-3 h-3" />
             </button>
 
-            <div className="px-4 py-2 rounded-2xl bg-emerald-50 border border-emerald-200 text-center font-mono dark:bg-emerald-950/40 dark:border-emerald-900">
-              <span className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                {solvedQuestionIds.length}
-              </span>
-              <p className="text-[10px] text-emerald-700 dark:text-emerald-300 font-bold">
-                Solved
-              </p>
+            <div className="px-3 py-1 rounded-xl bg-emerald-50 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-900/60 text-xs font-mono text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5 font-bold">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>{solvedQuestionIds.length} Solved</span>
             </div>
 
-            <div className="px-4 py-2 rounded-2xl bg-slate-100 border border-slate-200 text-center font-mono dark:bg-zinc-900 dark:border-zinc-800">
-              <span className="text-2xl font-extrabold text-slate-900 dark:text-white">
-                {processedQuestions.length}
-              </span>
-              <p className="text-[10px] text-slate-500 dark:text-zinc-400">
-                Matched
-              </p>
+            <div className="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono text-slate-700 dark:text-zinc-300 font-bold">
+              {processedQuestions.length} Matched
             </div>
           </div>
         </div>

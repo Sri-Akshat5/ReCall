@@ -188,20 +188,19 @@ export const Revision = ({ targetRecallKey, onClearTargetKey, onNavigateToInterv
   return (
     <div className="space-y-5 sm:space-y-6 font-sans max-w-7xl mx-auto px-1 sm:px-0">
 
-      {/* Revision Hub Header */}
-      <div className="p-5 sm:p-7 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-3 relative overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-          <Brain className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-          <span>Active Recall & Spaced Repetition Engine</span>
-        </div>
-
-        <div className="space-y-1.5">
-          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+      {/* Compact Header */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="space-y-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <Brain className="w-4.5 h-4.5 text-slate-700 dark:text-zinc-300" />
             Active Recall Revision Hub
           </h1>
-          <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
-            Select a subject revision deck below to review high-density study notes, test your recall confidence using Leitner ratings (Again, Hard, Good, Mastered), and lock in interview memory.
+          <p className="text-xs text-slate-500 dark:text-zinc-400">
+            Subject revision decks with Leitner spaced repetition ratings & study notes.
           </p>
+        </div>
+        <div className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-600 dark:text-zinc-400 shrink-0 self-start sm:self-auto">
+          3 Study Decks
         </div>
       </div>
 

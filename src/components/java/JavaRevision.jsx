@@ -97,21 +97,15 @@ export const JavaRevision = ({ onBackToInterview }) => {
   return (
     <div className="space-y-6 sm:space-y-8 font-sans max-w-7xl mx-auto pb-24 px-1 sm:px-0 overflow-x-hidden w-full">
 
-      {/* Header Banner */}
-      <div className="p-5 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4   relative overflow-hidden">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-            <BookMarked className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-            <span>Master Java Textbook Notes (Beginner ➔ Senior Architect)</span>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Comprehensive Java Concept Textbook & Architecture Guide
+      {/* Compact Header Banner */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-3">
+        <div className="space-y-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <BookMarked className="w-4 h-4 text-sky-500" />
+            Java Architecture & Concept Textbook
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
-            Detailed, structured notes designed for anyone learning Java or revising for senior technical interviews. Includes in-depth conceptual explanations, line-by-line code breakdowns, memory mechanics, and interview follow-up trees.
+          <p className="text-xs text-slate-500 dark:text-zinc-400">
+            In-depth conceptual notes, code breakdowns, memory mechanics & interview trees.
           </p>
         </div>
 

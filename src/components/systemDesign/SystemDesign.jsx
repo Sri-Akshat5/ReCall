@@ -218,26 +218,20 @@ export const SystemDesign = () => {
         </div>
       )}
 
-      {/* Header Banner - Clean Portal Style (NO SHADOW) */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 space-y-4">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-zinc-900 dark:border-zinc-800 text-xs font-mono dark:text-zinc-300">
-            <Sparkles className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-            <span>System Design & Distributed Architecture</span>
-          </div>
-
-          <div className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-700 dark:text-zinc-300">
-            Solved: <span className="text-slate-900 dark:text-white font-bold">{solvedTopics.length}/{SYSTEM_DESIGN_TOPICS.length}</span>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+      {/* Compact Header Banner */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 dark:bg-zinc-950 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="space-y-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <Sparkles className="w-4.5 h-4.5 text-slate-700 dark:text-zinc-300" />
             System Design & Architecture Hub
           </h1>
-          <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-3xl leading-relaxed">
-            Master Distributed Systems, High-Level Design (HLD), Low-Level Design (LLD), Object-Oriented Design, and Scalability Patterns. Select a domain below to begin.
+          <p className="text-xs text-slate-500 dark:text-zinc-400">
+            Distributed Systems, High-Level (HLD) & Low-Level (LLD) Design patterns.
           </p>
+        </div>
+
+        <div className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-mono text-slate-700 dark:text-zinc-300 shrink-0 self-start sm:self-auto">
+          Solved: <span className="text-slate-900 dark:text-white font-bold">{solvedTopics.length}/{SYSTEM_DESIGN_TOPICS.length}</span>
         </div>
       </div>
 
