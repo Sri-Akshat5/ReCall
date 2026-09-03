@@ -20,6 +20,7 @@ export const Breadcrumbs = () => {
     top250: "Top 250 SDE Bank",
     a2z: "Striver's A2Z Sheet",
     revise: "Revision Flashcards",
+    development: "Development Hub",
     notes: "My Notes",
     quiz: "Self Quiz"
   };

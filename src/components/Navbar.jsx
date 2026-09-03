@@ -22,7 +22,8 @@ import {
     Key,
     BookOpen,
     HelpCircle,
-    Network
+    Network,
+    Terminal
 } from "lucide-react";
 
 export const Navbar = ({
@@ -141,9 +142,10 @@ export const Navbar = ({
     }, [ALL_SEARCH_ITEMS, searchTerm]);
 
     const navItems = [
-        { id: "interview", path: "/interview", label: "Interview Q&A", shortLabel: "Q&A", icon: FileText, badge: "Mastery" },
-        { id: "system-design", path: "/system-design", label: "System Design", shortLabel: "Design", icon: Network, badge: "HLD/LLD" },
-        { id: "revise", path: "/revise", label: "Revise", shortLabel: "Revise", icon: Layers, badge: "Learn" },
+        { id: "interview", path: "/interview", label: "Interview Q&A", shortLabel: "Q&A", icon: FileText },
+        { id: "system-design", path: "/system-design", label: "System Design", shortLabel: "Design", icon: Network },
+        { id: "development", path: "/development", label: "Development", shortLabel: "Dev", icon: Terminal },
+        { id: "revise", path: "/revise", label: "Revise", shortLabel: "Revise", icon: Layers },
         { id: "dsa", path: "/dsa", label: "DSA Practice", shortLabel: "DSA", icon: Code2 },
         { id: "notes", path: "/notes", label: "My Notes", shortLabel: "Notes", icon: Edit3 },
     ];
@@ -205,8 +207,8 @@ export const Navbar = ({
                         )}
                     </Link>
 
-                    {/* Center: Nav Items (Dynamic pill row for both desktop AND mobile when scrolled) */}
-                    <nav className={`${isScrolled ? "flex" : "hidden md:flex"} items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar`}>
+                    {/* Center: Nav Items (LinkedIn style: Icon on top, Label below, No badges) */}
+                    <nav className={`${isScrolled ? "flex gap-0.5" : "hidden md:flex gap-1 sm:gap-1.5"} items-center justify-center overflow-x-auto no-scrollbar`}>
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const isActive = location.pathname === item.path;
@@ -215,26 +217,18 @@ export const Navbar = ({
                                     key={item.id}
                                     to={item.path}
                                     onClick={() => handleTabClick(item.id, item.path)}
-                                    className={`relative inline-flex items-center gap-1.5 transition cursor-pointer font-medium whitespace-nowrap ${isScrolled
-                                        ? "px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs rounded-full"
-                                        : "px-3 py-1.5 text-xs rounded-lg"
+                                    className={`relative flex flex-col items-center justify-center transition cursor-pointer font-medium whitespace-nowrap ${isScrolled
+                                        ? "px-2 sm:px-2.5 py-1 text-[10px] rounded-full"
+                                        : "px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] rounded-lg"
                                         } ${isActive
-                                            ? "bg-slate-900 text-white font-extrabold dark:bg-white dark:text-black"
+                                            ? "bg-slate-900 text-white font-extrabold dark:bg-white dark:text-black shadow-sm"
                                             : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-900/80"
                                         }`}
                                 >
-                                    <Icon className={isScrolled ? "w-3 h-3" : "w-3.5 h-3.5"} />
-                                    <span>
+                                    <Icon className={isScrolled ? "w-3.5 h-3.5" : "w-4 h-4 mb-0.5"} />
+                                    <span className="leading-tight text-[10px] sm:text-[11px]">
                                         {isScrolled ? item.shortLabel || item.label : item.label}
                                     </span>
-                                    {!isScrolled && item.badge && (
-                                        <span className={`text-[9px] px-1.5 py-0.2 rounded font-semibold ${isActive
-                                            ? "bg-slate-800 text-white dark:bg-zinc-200 dark:text-black"
-                                            : "bg-slate-100 text-slate-500 border border-slate-200 dark:bg-zinc-900 dark:text-zinc-500 dark:border-zinc-800"
-                                            }`}>
-                                            {item.badge}
-                                        </span>
-                                    )}
                                 </Link>
                             );
                         })}
@@ -503,7 +497,7 @@ export const Navbar = ({
                                     key={item.id}
                                     to={item.path}
                                     onClick={() => handleTabClick(item.id, item.path)}
-                                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs transition cursor-pointer font-medium active:scale-[0.98] ${isActive
+                                    className={`w-full flex items-center px-4 py-2.5 rounded-xl text-xs transition cursor-pointer font-medium active:scale-[0.98] ${isActive
                                         ? "bg-slate-900 text-white font-extrabold dark:bg-white dark:text-black"
                                         : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-900/90 dark:hover:text-white border border-transparent"
                                         }`}
@@ -512,14 +506,6 @@ export const Navbar = ({
                                         <Icon className="w-4 h-4" />
                                         <span className="text-sm font-semibold">{item.label}</span>
                                     </div>
-                                    {item.badge && (
-                                        <span className={`text-[10px] px-2 py-0.5 rounded-md font-semibold ${isActive
-                                            ? "bg-slate-800 text-white dark:bg-black dark:text-white"
-                                            : "bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-400 border border-slate-300 dark:border-zinc-800"
-                                            }`}>
-                                            {item.badge}
-                                        </span>
-                                    )}
                                 </Link>
                             );
                         })}

@@ -135,6 +135,10 @@ export const SeoHead = ({ activeTab = "" }) => {
         title: "Active Recall 3D Flashcards • Leitner Spaced Repetition | ReCall",
         desc: "Interactive 3D active recall flashcards using Leitner spaced repetition to lock software engineering knowledge into long-term memory."
       },
+      "/development": {
+        title: "Full-Stack Development & Engineering Hub | ReCall",
+        desc: "Master Full-Stack Software Development: React 19, RSC, Node.js, Spring Boot, Databases, REST/GraphQL APIs, DevOps, Docker, and Web Security."
+      },
       "/notes": {
         title: "My Notes Workspace • Encrypted Local Study Notes | ReCall",
         desc: "Create and organize custom technical study notes with offline privacy-first local browser storage."
