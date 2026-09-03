@@ -144,7 +144,7 @@ export const Navbar = ({
     const navItems = [
         { id: "interview", path: "/interview", label: "Interview Q&A", shortLabel: "Q&A", icon: FileText },
         { id: "system-design", path: "/system-design", label: "System Design", shortLabel: "Design", icon: Network },
-        { id: "development", path: "/development", label: "Development", shortLabel: "Dev", icon: Terminal },
+        { id: "development", path: "/development", label: "Development", shortLabel: "Dev", icon: Terminal, comingSoon: true },
         { id: "revise", path: "/revise", label: "Revise", shortLabel: "Revise", icon: Layers },
         { id: "dsa", path: "/dsa", label: "DSA Practice", shortLabel: "DSA", icon: Code2 },
         { id: "notes", path: "/notes", label: "My Notes", shortLabel: "Notes", icon: Edit3 },
@@ -226,8 +226,13 @@ export const Navbar = ({
                                         }`}
                                 >
                                     <Icon className={isScrolled ? "w-3.5 h-3.5" : "w-4 h-4 mb-0.5"} />
-                                    <span className="leading-tight text-[10px] sm:text-[11px]">
-                                        {isScrolled ? item.shortLabel || item.label : item.label}
+                                    <span className="leading-tight text-[10px] sm:text-[11px] flex items-center gap-1">
+                                        <span>{isScrolled ? item.shortLabel || item.label : item.label}</span>
+                                        {item.comingSoon && (
+                                            <span className="px-1 py-0.2 text-[8px] font-extrabold uppercase tracking-tight rounded-full bg-amber-500/20 text-amber-700 dark:bg-amber-400/20 dark:text-amber-300 border border-amber-500/30 leading-none">
+                                                {isScrolled ? "Soon" : "Coming Soon"}
+                                            </span>
+                                        )}
                                     </span>
                                 </Link>
                             );
@@ -497,7 +502,7 @@ export const Navbar = ({
                                     key={item.id}
                                     to={item.path}
                                     onClick={() => handleTabClick(item.id, item.path)}
-                                    className={`w-full flex items-center px-4 py-2.5 rounded-xl text-xs transition cursor-pointer font-medium active:scale-[0.98] ${isActive
+                                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-xs transition cursor-pointer font-medium active:scale-[0.98] ${isActive
                                         ? "bg-slate-900 text-white font-extrabold dark:bg-white dark:text-black"
                                         : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-900/90 dark:hover:text-white border border-transparent"
                                         }`}
@@ -506,6 +511,11 @@ export const Navbar = ({
                                         <Icon className="w-4 h-4" />
                                         <span className="text-sm font-semibold">{item.label}</span>
                                     </div>
+                                    {item.comingSoon && (
+                                        <span className="px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider rounded-full bg-amber-500/20 text-amber-700 dark:bg-amber-400/20 dark:text-amber-300 border border-amber-500/30">
+                                            Coming Soon
+                                        </span>
+                                    )}
                                 </Link>
                             );
                         })}

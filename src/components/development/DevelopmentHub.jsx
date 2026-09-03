@@ -91,9 +91,14 @@ export const DevelopmentHub = () => {
 
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div className="space-y-2 max-w-2xl">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono font-semibold">
-                            <Terminal className="w-3.5 h-3.5" />
-                            <span>Full-Stack Engineering & Development Hub</span>
+                        <div className="flex flex-wrap items-center gap-2">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono font-semibold">
+                                <Terminal className="w-3.5 h-3.5" />
+                                <span>Full-Stack Engineering & Development Hub</span>
+                            </div>
+                            <span className="px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                                Coming Soon
+                            </span>
                         </div>
                         <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight font-sans">
                             Development <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400">Mastery Bank</span>
